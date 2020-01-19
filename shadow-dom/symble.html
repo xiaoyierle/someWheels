@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://at.alicdn.com/t/font_263042_33ljnuzlzrn.js"></script>
+    <script src="https://www.mwcxs.top/static/testTool/watermark.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+</head>
+<style type="text/css">
+    .icon {
+       /* width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden; */
+    }
+    html{
+        height: 100%;
+    }
+    body{
+        height: 100%;
+        margin: 0;
+    }
+</style>
+<body>
+    <h1>123213 <span id='title'></span></h1>
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-plant-"></use>
+    </svg>
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-plant-"></use>
+    </svg>
+    <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-plant-1"></use>
+    </svg>
+</body>
+<script>
+    let elementRef = document.getElementById('title')
+    let shadow = elementRef.attachShadow({mode: 'open'})
+    var para = document.createElement('p')
+    para.innerText= '12jkfdskjhffdjslk'
+    shadow.appendChild(para)
+    
+</script>
+<script>
+    window.onload=function(){
+        // watermark.load({ watermark_txt: "测试水印，1021002301，测试水印，SDAHJDBJJdjsfsc" });
+        watermark.init({
+            watermark_txt: `测试水印 ${moment().format('YYYY-MM-DD HH:mm:ss')}`, //第一行水印的内容
+            watermark_time: moment().format('YYYY-MM-DD HH:mm:ss'), //第二行水印内容
+            watermark_x: 20, //水印起始位置x轴坐标
+            watermark_y: 20, //水印起始位置Y轴坐标
+            watermark_rows: 9, //水印行数
+            watermark_cols: 9, //水印列数
+            watermark_x_space: 60, //水印x轴间隔
+            watermark_y_space: 76, //水印y轴间隔
+            watermark_font: '微软雅黑', //水印字体
+            watermark_color: 'gray', //水印字体颜色
+            watermark_fontsize: '14px', //水印字体大小
+            watermark_alpha: 0.3, //水印透明度，要求设置在大于等于0.005
+            watermark_width: 150, //水印宽度
+            watermark_height: 100, //水印高度
+            watermark_angle: 30 //水印倾斜度数
+            //watermark_parent_node: document.getElementById('J_table') //水印插件挂载的父元素element,不输入则默认挂在body上
+        });
+    }
+</script>
+</html>
