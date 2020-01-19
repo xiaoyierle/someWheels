@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="http://img0.bdstatic.com/static/searchresult/img/logo-2X_b99594a.png" alt="pic">
+        <p>尝试拖动图片至word</p>
+        <p>点击我再粘贴试试</p>
+        <p id="momentDom"></p>
+      </div>
+</body>
+<script>
+const getSelect = targetNode => {
+  if (window.getSelection) {
+    //chrome等主流浏览器
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNode(targetNode);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  } else if (document.body.createTextRange) {
+    //ie
+    var range = document.body.createTextRange();
+    range.moveToElementText(targetNode);
+    range.select();
+  }
+}
+
+const clipboardHandler = (nodeName, event) => {
+	event = event || nodeName; //不传参时
+  const type = Object.prototype.toString.call(nodeName).replace(/\[object\s|\]/g, '');
+  const target = event.target || event.srcElement;
+
+  var result = false;
+  switch (type) {
+    case 'String':
+      result = (target.nodeName.toLowerCase() === nodeName);
+      break;
+    case 'Array':
+      result = nodeName.some(item => target.nodeName.toLowerCase() === item);
+      break;
+    case 'Object':
+      nodeName = null;
+    default:
+      result = (target.nodeName === 'IMG');
+  }
+
+  if (result) {
+    getSelect(target);
+    document.execCommand('copy');
+  }
+}
+//绑定事件
+var img = document.querySelectorAll("img")[0];
+img.addEventListener('mouseenter', clipboardHandler);
+
+var pHandler = clipboardHandler.bind(null, 'p');
+var div = document.querySelectorAll("div")[0];
+div.addEventListener('click', pHandler);
+
+</script>
+</html>
