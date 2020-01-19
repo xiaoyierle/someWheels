@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="list">
+    <div class="list_child">
+      <div class="list_child_child">
+        <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="clip">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="">
+  </div>
+  <div class="testout">
+    <div class="test">
+    </div>
+  </div>
+</body>
+
+</html>
+<style>
+  .list {
+    width: 100px;
+    height: 150px;
+    overflow: hidden;
+    transform: rotate(120deg);
+    overflow: hidden;
+  }
+
+  .list_child {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: rotate(-60deg);
+  }
+
+  .list_child_child {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: rotate(-60deg);
+    background-color: red;
+  }
+
+  div.clip {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: teal;
+    -webkit-clip-path: polygon(45% 1.33975%, 46.5798% 0.60307%, 48.26352% 0.15192%, 50% 0%, 51.73648% 0.15192%, 53.4202% 0.60307%, 55% 1.33975%, 89.64102% 21.33975%, 91.06889% 22.33956%, 92.30146% 23.57212%, 93.30127% 25%, 94.03794% 26.5798%, 94.48909% 28.26352%, 94.64102% 30%, 94.64102% 70%, 94.48909% 71.73648%, 94.03794% 73.4202%, 93.30127% 75%, 92.30146% 76.42788%, 91.06889% 77.66044%, 89.64102% 78.66025%, 55% 98.66025%, 53.4202% 99.39693%, 51.73648% 99.84808%, 50% 100%, 48.26352% 99.84808%, 46.5798% 99.39693%, 45% 98.66025%, 10.35898% 78.66025%, 8.93111% 77.66044%, 7.69854% 76.42788%, 6.69873% 75%, 5.96206% 73.4202%, 5.51091% 71.73648%, 5.35898% 70%, 5.35898% 30%, 5.51091% 28.26352%, 5.96206% 26.5798%, 6.69873% 25%, 7.69854% 23.57212%, 8.93111% 22.33956%, 10.35898% 21.33975%);
+    overflow: hidden;
+  }
+
+.testout{
+  padding: 0 50px;
+}
+  .test {
+    position: relative;
+    width: 50px;
+    height: 86.6px;
+    /* margin: 50px auto; */
+    background-color: red;
+    transform: rotate(-30deg);
+  }
+
+  .test:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 50px;
+    border-width: 43.3px 25px;
+    border-style: solid;
+    border-color: transparent red transparent transparent;
+  }
+
+  .test:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50px;
+    border-width: 43.3px 25px;
+    border-style: solid;
+    border-color: transparent transparent transparent red;
+    top: 0;
+  }
+</style>
