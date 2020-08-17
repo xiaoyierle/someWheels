@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="birdCvs" width="443" height="320"></canvas>
+  </body>
+  <style>
+    html {
+      background: #000;
+    }
+  </style>
+  <script type="text/javascript">
+    function renderImage(x, t) {
+      var y = new Image();
+      return (
+        (y.onload = function () {
+          t.load++;
+        }),
+        (y.src = x),
+        y
+      );
+    }
+    let p = document.getElementById("birdCvs");
+    p.setAttribute("width", 547);
+    p.setAttribute("height", 578);
+    l = p.getContext("2d");
+    loadCount = { load: 0, num: 5 };
+    w = renderImage("./img/bird.png", loadCount);
+    (w.opc = 0), (u = renderImage("./img/b_line.png", loadCount));
+    g = renderImage("./img/b_dots.png", loadCount);
+    m = renderImage("./img/b_shadow.png", loadCount);
+    v = renderImage("./img/b_border.png", loadCount);
+    let J = 0;
+    let f = 0;
+    let P = 0;
+    function loadImg() {
+      l.drawImage(w, 0, 0, 547, 578);
+      l.drawImage(u, 0, 0, 547, 578);
+      l.drawImage(g, 0, 0, 547, 578);
+      l.drawImage(m, 0, 0, 547, 578);
+      l.drawImage(v, 0, 0, 547, 578);
+      // drawCircle(l);
+    }
+    function drawCircle(cxt) {
+      cxt.clearRect(0, 0, 48, 48);
+      cxt.beginPath();
+      cxt.arc(200, 200, 50, 0, 360, false);
+      cxt.lineWidth = 5;
+      cxt.strokeStyle = "green";
+      cxt.stroke(); //画空心圆
+      cxt.closePath();
+    }
+    function t(x, t, y) {
+      return (y >= x && y <= t) || (y >= t && y <= x);
+    }
+    function y(x, t, y) {
+      return t ? { x: x.x + (t.x - x.x) * y, y: x.y + (t.y - x.y) * y } : x
+    }
+    function e(x, y, n) {
+      (this.startP = x),
+        (this.startP.x += 30),
+        (this.endP = y),
+        (this.endP.x += 30),
+        (this.startT = Math.ceil(20 * Math.random())),
+        (this.dur = Math.ceil(50 * Math.random())),
+        (this.curP = { x: this.startP.x, y: this.startP.y }),
+        (this.isEnd = !1),
+        (this.lWidth = n),
+        (this.opc = 1),
+        "function" != typeof this.draw &&
+          (e.prototype.draw = function (x) {
+            x.save(),
+              (x.globalAlpha = this.opc),
+              (x.lineWidth = this.lWidth),
+              (x.strokeStyle = "#196597"),
+              x.beginPath(),
+              x.moveTo(this.startP.x, this.startP.y),
+              x.lineTo(this.curP.x, this.curP.y),
+              x.stroke(),
+              x.restore();
+          }),
+        "function" != typeof this.move &&
+          (e.prototype.move = function () {
+            this.isEnd ||
+              ((this.curP.x += (this.endP.x - this.startP.x) / this.dur),
+              (this.curP.y += (this.endP.y - this.startP.y) / this.dur),
+              t(this.startP.x, this.endP.x, this.curP.x) ||
+                t(this.startP.y, this.endP.y, this.curP.y) ||
+                ((this.curP.x = this.endP.x),
+                (this.curP.y = this.endP.y),
+                (this.isEnd = !0)));
+          });
+    }
+    function loadingImg() {
+      if (loadCount.load < loadCount.num) {
+        setTimeout(loadingImg, 1000);
+      } else {
+        loadImg();
+      }
+    }
+    loadingImg();
+    let lineList = [
+      new e({ x: 30, y: 85 }, { x: 45, y: 86 }, 1),
+      new e({ x: 45, y: 86 }, { x: 116, y: 111 }, 1),
+      new e({ x: 116, y: 111 }, { x: 153, y: 104 }, 1),
+      new e({ x: 153, y: 104 }, { x: 192, y: 126 }, 1),
+      new e({ x: 192, y: 126 }, { x: 225, y: 162 }, 1),
+      new e({ x: 225, y: 162 }, { x: 286, y: 116 }, 1),
+      new e({ x: 286, y: 116 }, { x: 395, y: 56 }, 1),
+      new e({ x: 395, y: 56 }, { x: 485, y: 21 }, 1),
+      new e({ x: 485, y: 21 }, { x: 417, y: 154 }, 1),
+      new e({ x: 417, y: 154 }, { x: 374, y: 229 }, 1),
+      new e({ x: 374, y: 229 }, { x: 413, y: 236 }, 1),
+      new e({ x: 413, y: 236 }, { x: 470, y: 256 }, 1),
+      new e({ x: 470, y: 256 }, { x: 514, y: 279 }, 1),
+      new e({ x: 413, y: 236 }, { x: 405, y: 298 }, 1),
+      new e({ x: 514, y: 279 }, { x: 471, y: 287 }, 1),
+      new e({ x: 471, y: 287 }, { x: 405, y: 298 }, 1),
+      new e({ x: 405, y: 298 }, { x: 313, y: 323 }, 1),
+      new e({ x: 471, y: 287 }, { x: 374, y: 229 }, 1),
+      new e({ x: 313, y: 323 }, { x: 388, y: 489 }, 1),
+      new e({ x: 388, y: 489 }, { x: 303, y: 404 }, 1),
+      new e({ x: 303, y: 404 }, { x: 211, y: 354 }, 1),
+      new e({ x: 211, y: 354 }, { x: 150, y: 298 }, 1),
+      new e({ x: 150, y: 298 }, { x: 131, y: 246 }, 1),
+      new e({ x: 131, y: 246 }, { x: 136, y: 185 }, 1),
+      new e({ x: 136, y: 185 }, { x: 132, y: 160 }, 1),
+      new e({ x: 132, y: 160 }, { x: 103, y: 122 }, 1),
+      new e({ x: 103, y: 122 }, { x: 30, y: 85 }, 1),
+      new e({ x: 116, y: 111 }, { x: 102, y: 122 }, 1),
+      new e({ x: 132, y: 160 }, { x: 153, y: 104 }, 1),
+      new e({ x: 132, y: 160 }, { x: 225, y: 162 }, 1),
+      new e({ x: 192, y: 126 }, { x: 131, y: 246 }, 1),
+      new e({ x: 192, y: 126 }, { x: 103, y: 122 }, 1),
+      new e({ x: 225, y: 162 }, { x: 374, y: 229 }, 1),
+      new e({ x: 374, y: 229 }, { x: 313, y: 323 }, 1),
+      new e({ x: 131, y: 246 }, { x: 374, y: 229 }, 1),
+      new e({ x: 225, y: 162 }, { x: 150, y: 298 }, 1),
+      new e({ x: 153, y: 104 }, { x: 211, y: 354 }, 1),
+      new e({ x: 303, y: 404 }, { x: 313, y: 323 }, 1),
+      new e({ x: 313, y: 323 }, { x: 211, y: 354 }, 1),
+      new e({ x: 313, y: 323 }, { x: 211, y: 354 }, 1),
+      new e({ x: 225, y: 162 }, { x: 303, y: 404 }, 1),
+      new e({ x: 211, y: 354 }, { x: 374, y: 229 }, 1),
+      new e({ x: 150, y: 298 }, { x: 514, y: 279 }, 1),
+      new e({ x: 211, y: 354 }, { x: 485, y: 21 }, 1),
+      new e({ x: 150, y: 298 }, { x: 485, y: 21 }, 1),
+      new e({ x: 132, y: 160 }, { x: 313, y: 323 }, 1),
+      new e({ x: 286, y: 116 }, { x: 374, y: 229 }, 1),
+      new e({ x: 395, y: 56 }, { x: 417, y: 154 }, 1),
+      new e({ x: 395, y: 56 }, { x: 374, y: 229 }, 1),
+      new e({ x: 417, y: 154 }, { x: 225, y: 162 }, 1),
+      new e({ x: 286, y: 116 }, { x: 417, y: 154 }, 1),
+    ];
+    function i(x, t) {
+      (this.points = x),
+        (this.ctx = t),
+        (this.timer = 0),
+        (this.curLines = []),
+        (this.endNum = 0);
+      "function" != typeof this.draw &&
+        (i.prototype.draw = function () {
+          this.ctx.save(),
+            (this.ctx.globalAlpha = 0.6),
+            (this.ctx.lineWidth = 1),
+            (this.ctx.strokeStyle = "#fff");
+          for (var x = 0; x < this.curLines.length; x++) {
+            var t = this.curLines[x],
+              e = this.points[t.curLine].line,
+              n = t.curPoint.length,
+              i = 0;
+            if (n >= 5) {
+              i = n - 4;
+              var r = e[t.curPoint[0]],
+                s = e[t.curPoint[1]];
+              if (r && s) {
+                var a = y(e[t.curPoint[0]], e[t.curPoint[1]], t.curPro);
+                this.ctx.save(),
+                  (this.ctx.globalAlpha = 0.5 * (1 - t.curPoint)),
+                  this.ctx.beginPath(),
+                  this.ctx.moveTo(a.x, a.y),
+                  this.ctx.lineTo(s.x, s.y),
+                  this.ctx.stroke(),
+                  this.ctx.restore();
+              }
+            }
+            for (var o = i; o < n - 2; o++) {
+              var c = e[t.curPoint[o]];
+              if (c) {
+                this.ctx.beginPath(), this.ctx.moveTo(c.x, c.y);
+                var h = e[t.curPoint[o + 1]];
+                h && this.ctx.lineTo(h.x, h.y), this.ctx.stroke();
+              }
+            }
+            var d = e[t.curPoint[n - 2]];
+            if (d) {
+              this.ctx.beginPath(), this.ctx.moveTo(d.x, d.y);
+              var p = y(e[t.curPoint[n - 2]], e[t.curPoint[n - 1]], t.curPro);
+              this.ctx.lineTo(p.x, p.y), this.ctx.stroke();
+            }
+          }
+          this.ctx.restore();
+        }),
+        "function" != typeof this.nextFps &&
+          (i.prototype.nextFps = function () {
+            for (var x = 0, t = this.points.length; x < t; x++)
+              10 * this.points[x].star == this.timer &&
+                this.curLines.push({ curLine: x, curPoint: [0, 1], curPro: 0 });
+            for (var x = 0; x < this.curLines.length; x++) {
+              var y = this.curLines[x];
+              (y.curPro = Math.min(1, y.curPro + 0.1)),
+                1 == y.curPro &&
+                  ((y.curPro = 0),
+                  y.curPoint.push(y.curPoint[y.curPoint.length - 1] + 1),
+                  y.curPoint.length > 5 && y.curPoint.splice(0, 1),
+                  this.points[y.curLine].line.length - 1 < y.curPoint[0] &&
+                    (this.curLines.splice(x, 1), (x -= 1), this.endNum++));
+            }
+            this.timer++,
+              this.endNum == this.points.length &&
+                ((this.endNum = 0), (this.timer = 0), (this.curLines = []));
+          });
+    }
+    rx = [
+      new i(
+        [
+          {
+            line: [
+              { x: 282, y: 233 },
+              { x: 259, y: 218 },
+              { x: 237, y: 187 },
+              { x: 223, y: 157 },
+              { x: 222, y: 125 },
+              { x: 206, y: 112 },
+              { x: 182, y: 104 },
+              { x: 146, y: 111 },
+              { x: 114, y: 100 },
+              { x: 96, y: 94 },
+              { x: 74, y: 86 },
+              { x: 62, y: 85 },
+            ],
+            star: 0,
+          },
+          {
+            line: [
+              { x: 223, y: 157 },
+              { x: 191, y: 166 },
+              { x: 163, y: 159 },
+              { x: 145, y: 138 },
+              { x: 132, y: 122 },
+              { x: 116, y: 114 },
+              { x: 99, y: 105 },
+              { x: 77, y: 93 },
+              { x: 62, y: 85 },
+            ],
+            star: 3,
+          },
+          {
+            line: [
+              { x: 259, y: 218 },
+              { x: 224, y: 218 },
+              { x: 186, y: 205 },
+              { x: 166, y: 185 },
+            ],
+            star: 1,
+          },
+          {
+            line: [
+              { x: 224, y: 218 },
+              { x: 212, y: 238 },
+              { x: 194, y: 258 },
+              { x: 170, y: 270 },
+            ],
+            star: 2,
+          },
+          {
+            line: [
+              { x: 282, y: 233 },
+              { x: 259, y: 263 },
+              { x: 222, y: 265 },
+              { x: 205, y: 291 },
+              { x: 180, y: 297 },
+            ],
+            star: 0,
+          },
+          {
+            line: [
+              { x: 259, y: 263 },
+              { x: 261, y: 306 },
+              { x: 241, y: 323 },
+              { x: 218, y: 334 },
+            ],
+            star: 1,
+          },
+          {
+            line: [
+              { x: 261, y: 306 },
+              { x: 264, y: 339 },
+              { x: 268, y: 365 },
+            ],
+            star: 2,
+          },
+          {
+            line: [
+              { x: 282, y: 233 },
+              { x: 309, y: 246 },
+              { x: 308, y: 272 },
+              { x: 325, y: 289 },
+              { x: 319, y: 315 },
+              { x: 315, y: 346 },
+              { x: 334, y: 360 },
+              { x: 355, y: 387 },
+              { x: 365, y: 409 },
+            ],
+            star: 0,
+          },
+          {
+            line: [
+              { x: 365, y: 409 },
+              { x: 352, y: 421 },
+              { x: 370, y: 441 },
+              { x: 387, y: 457 },
+              { x: 404, y: 476 },
+              { x: 418, y: 489 },
+            ],
+            star: 9,
+          },
+          {
+            line: [
+              { x: 365, y: 409 },
+              { x: 390, y: 420 },
+              { x: 397, y: 443 },
+              { x: 410, y: 464 },
+              { x: 418, y: 489 },
+            ],
+            star: 9,
+          },
+          {
+            line: [
+              { x: 316, y: 345 },
+              { x: 289, y: 351 },
+              { x: 268, y: 365 },
+            ],
+            star: 5,
+          },
+          {
+            line: [
+              { x: 282, y: 233 },
+              { x: 296, y: 207 },
+              { x: 303, y: 170 },
+              { x: 316, y: 116 },
+            ],
+            star: 0,
+          },
+          {
+            line: [
+              { x: 342, y: 180 },
+              { x: 333, y: 142 },
+              { x: 366, y: 129 },
+              { x: 365, y: 87 },
+            ],
+            star: 2,
+          },
+          {
+            line: [
+              { x: 296, y: 207 },
+              { x: 342, y: 180 },
+              { x: 372, y: 159 },
+            ],
+            star: 1,
+          },
+          {
+            line: [
+              { x: 342, y: 180 },
+              { x: 376, y: 197 },
+              { x: 407, y: 181 },
+              { x: 434, y: 181 },
+              { x: 447, y: 155 },
+              { x: 461, y: 143 },
+              { x: 472, y: 125 },
+            ],
+            star: 2,
+          },
+          {
+            line: [
+              { x: 373, y: 159 },
+              { x: 407, y: 137 },
+              { x: 394, y: 108 },
+              { x: 395, y: 75 },
+              { x: 425, y: 56 },
+              { x: 456, y: 46 },
+              { x: 483, y: 32 },
+              { x: 513, y: 22 },
+            ],
+            star: 3,
+          },
+          {
+            line: [
+              { x: 407, y: 137 },
+              { x: 433, y: 113 },
+              { x: 456, y: 88 },
+              { x: 480, y: 85 },
+              { x: 489, y: 63 },
+              { x: 503, y: 46 },
+              { x: 513, y: 22 },
+            ],
+            star: 4,
+          },
+          {
+            line: [
+              { x: 309, y: 245 },
+              { x: 345, y: 258 },
+              { x: 373, y: 241 },
+              { x: 404, y: 229 },
+            ],
+            star: 1,
+          },
+          {
+            line: [
+              { x: 345, y: 259 },
+              { x: 384, y: 274 },
+              { x: 369, y: 312 },
+              { x: 344, y: 324 },
+            ],
+            star: 2,
+          },
+          {
+            line: [
+              { x: 384, y: 274 },
+              { x: 414, y: 277 },
+              { x: 449, y: 279 },
+              { x: 465, y: 293 },
+              { x: 499, y: 286 },
+              { x: 544, y: 279 },
+            ],
+            star: 3,
+          },
+          {
+            line: [
+              { x: 413, y: 276 },
+              { x: 424, y: 251 },
+              { x: 456, y: 258 },
+              { x: 501, y: 256 },
+              { x: 521, y: 268 },
+              { x: 544, y: 279 },
+            ],
+            star: 4,
+          },
+        ],
+        l
+      ),
+    ];
+    function testAnimation() {
+      requestAnimationFrame(testAnimation);
+      if (loadCount.load >= loadCount.num) {
+        l.clearRect(0, 0, p.width, p.height);
+        loadImg()
+        for (var x = 0; x < lineList.length; x++) {
+          l.restore();
+          // lineList[x].move();
+          // lineList[x].draw(l);
+          if (f++ && f < 188) {
+            P = f < 94 ? Math.min(1, P + 0.04) : Math.max(0, P - 0.04);
+            l.save();
+            l.globalAlpha = P;
+            l.restore();
+          } else {
+            f = 0;
+            P = 0;
+          }
+        }
+        rx[0].draw(), rx[0].nextFps()
+      }
+    }
+    testAnimation();
+  </script>
+</html>
