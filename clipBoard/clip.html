@@ -83,12 +83,7 @@
             ctx.drawImage(img, 200, 200, img.width, img.height)
             let base64 = canvas.toDataURL("image/png")
             var image = document.createElement("img")
-            // image.src = 'https://smarttax-basic.oss-cn-shanghai.aliyuncs.com/prod/temp/seller/settlement/20191231/74269_%E5%9B%BE%E7%89%871%2811-02-14-44-43%29.png'
-            // image.src = 'https://smarttax-basic.oss-cn-shanghai.aliyuncs.com/11.png'
-            // image.src = 'http://img0.bdstatic.com/static/searchresult/img/logo-2X_b99594a.png'
-            // image.src = 'http://smarttax-basic.oss-cn-shanghai.aliyuncs.com/11.png'
-            image.src = 'http://smarttax-dev.oss-cn-shanghai.aliyuncs.com/test/temp/mobilecompany/mobilecompany/20200107/d65fd136-5cb5-4ef3-a3cb-380c760061a2.jpg'
-            // image.src = 'http://587v5.com/static/yay.05eb60c6.jpg'
+            image.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599626322698&di=6e44f87f2144a8e79804df09d21088e3&imgtype=0&src=http%3A%2F%2Fi0.sinaimg.cn%2Ftravel%2F2012%2F0106%2FU5801P704DT20120106133956.jpg'
             // image.src = base64
             console.log(base64)
             $('#codehidden').html(image)
