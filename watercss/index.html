@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="stuff"></div>
+</body>
+<style>
+  .stuff {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-animation: ouch 7s infinite alternate;
+    animation: ouch 7s infinite alternate;
+    background: radial-gradient(83vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 24vw 32vh, radial-gradient(65vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 4vw 96vh, radial-gradient(34vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 0vw 87vh, radial-gradient(66vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 73vw 5vh, radial-gradient(72vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 100vw 14vh, radial-gradient(83vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 39vw 48vh, radial-gradient(77vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 97vw 69vh, radial-gradient(80vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 91vw 82vh, radial-gradient(67vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 16vw 46vh, radial-gradient(12vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 90vw 96vh, radial-gradient(13vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 79vw 28vh, radial-gradient(91vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 95vw 68vh, radial-gradient(37vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 83vw 46vh, radial-gradient(81vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 96vw 21vh, radial-gradient(12vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 23vw 56vh, radial-gradient(13vw, #ffffff 0%, #333333 50%, #ffffff, #000000, #eeeeee) 40vw 14vh;
+    background-color: #000;
+    background-blend-mode: difference;
+}
+
+.stuff::before, .stuff::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.stuff::before {
+    background: #0082ab;
+    mix-blend-mode: color-burn;
+}
+
+@-webkit-keyframes ouch {
+    100% {
+        background-position: 92vw 48vh, -18vw -18vh, 57vw 119vh, -14vw 58vh, 104vw 85vh, 149vw -44vh, 7vw 122vh, 54vw 133vh, 81vw 91vh, 97vw -46vh, 63vw 81vh, 85vw 76vh, 54vw 139vh, 32vw -22vh, 37vw 78vh, -2vw -19vh;
+    }
+}
+
+@keyframes ouch {
+    100% {
+        background-position: 92vw 48vh, -18vw -18vh, 57vw 119vh, -14vw 58vh, 104vw 85vh, 149vw -44vh, 7vw 122vh, 54vw 133vh, 81vw 91vh, 97vw -46vh, 63vw 81vh, 85vw 76vh, 54vw 139vh, 32vw -22vh, 37vw 78vh, -2vw -19vh;
+    }
+}
+
+</style>
+</html>

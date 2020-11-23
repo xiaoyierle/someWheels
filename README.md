@@ -16,3 +16,5 @@
 [拖动图片至聊天窗,点击复制图片](https://xiaoyierle.github.io/someWheels/clipBoard/)
 ### canvas动效，仿迅雷图标
 [canvas动效，仿迅雷图标](https://xiaoyierle.github.io/someWheels/thunderCanvas/)
+### css动效，水波纹效果
+[css动效，水波纹效果](https://xiaoyierle.github.io/someWheels/watercss/)
