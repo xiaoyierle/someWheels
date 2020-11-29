@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <svg class="svg-filters">
+      <defs>
+        <filter id="filter-ripple-1">
+          <feImage
+            id="svgFeImage"
+            xlink:href="./bg.png"
+            x="0"
+            y="0"
+            width="512"
+            height="512"
+            result="ripple"
+          ></feImage>
+          <feDisplacementMap
+            id="feMap"
+            xChannelSelector="G"
+            yChannelSelector="R"
+            color-interpolation-filters="sRGB"
+            in="SourceGraphic"
+            in2="ripple"
+            scale="200"
+          ></feDisplacementMap>
+          <feComposite operator="in" in2="ripple"></feComposite>
+          <!-- <feComposite in2="SourceGraphic"></feComposite> -->
+        </filter>
+      </defs>
+    </svg>
+    <img src="./mm1.jpg" class="target"/>
+  </body>
+  <style>
+    .target {
+      filter: url(#filter-ripple-1);
+    }
+    .svg-filters {
+      position: absolute;
+      clip: rect(0 0 0 0);
+    }
+  </style>
+</html>

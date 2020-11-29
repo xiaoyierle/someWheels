@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>feDisplacementMap滤镜效果走马观花</title>
+    <style>
+      .target {
+        filter: url(#filter-ripple-1);
+      }
+      .svg-filters {
+        position: absolute;
+        clip: rect(0 0 0 0);
+      }
+      label > img {
+        width: 120px;
+        height: 120px;
+      }
+      [type="range"] {
+        width: 600px;
+      }
+      [type="radio"] {
+        position: absolute;
+        clip: rect(0 0 0 0);
+      }
+      :checked + label {
+        outline: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <svg class="svg-filters">
+      <defs>
+        <filter id="filter-ripple-1">
+          <feImage
+            id="svgFeImage"
+            xlink:href="https://www.zhangxinxu.com/study/201712/grad/ripple-gray.png"
+            x="0"
+            y="0"
+            width="512"
+            height="512"
+            result="ripple"
+          ></feImage>
+          <feDisplacementMap
+            id="feMap"
+            xChannelSelector="R"
+            yChannelSelector="G"
+            color-interpolation-filters="sRGB"
+            in="SourceGraphic"
+            in2="ripple"
+            scale="200"
+          ></feDisplacementMap>
+          <feComposite operator="in" in2="ripple"></feComposite>
+          <!-- <feComposite in2="SourceGraphic"></feComposite> -->
+        </filter>
+      </defs>
+    </svg>
+    <p>x通道：R，y通道：G</p>
+    <p style="padding: 50px 0">
+      <img
+        class="target"
+        src="https://image.zhangxinxu.com/image/study/s/s512/mm1.jpg"
+        width="512"
+        height="381"
+      />
+      <!--<img class="target" src="//image.zhangxinxu.com/image/study/s/s512/mm3.jpg" width="512" height="381">-->
+    </p>
+    <p>
+      <!--<input type="radio" id="feImage1" name="feImage" value="./grad/grad1.jpg" checked>
+    <label for="feImage1"><img src="./grad/grad1.jpg"></label>-->
+      <input
+        type="radio"
+        id="feImage2"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad2.jpg"
+      />
+      <label for="feImage2"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad2.jpg"
+      /></label>
+      <!--<input type="radio" id="feImage3" name="feImage" value="https://www.zhangxinxu.com/study/201712/grad/grad3.jpg">
+    <label for="feImage3"><img src="https://www.zhangxinxu.com/study/201712/grad/grad3.jpg"></label>-->
+      <input
+        type="radio"
+        id="feImage4"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad4.jpg"
+      />
+      <label for="feImage4"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad4.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage5"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad5.jpg"
+      />
+      <label for="feImage5"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad5.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage6"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad6.jpg"
+      />
+      <label for="feImage6"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad6.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage7"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad7.jpg"
+      />
+      <label for="feImage7"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad7.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage8"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad8.png"
+      />
+      <label for="feImage8"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad8.png"
+      /></label>
+      <input
+        type="radio"
+        id="feImage9"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad9.jpg"
+      />
+      <label for="feImage9"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad9.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage10"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad10.jpg"
+      />
+      <label for="feImage10"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad10.jpg"
+      /></label>
+      <input
+        type="radio"
+        id="feImage11"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/map.png"
+      />
+      <label for="feImage11"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/map.png"
+      /></label>
+      <input
+        type="radio"
+        id="feImage12"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/ripple-gray.png"
+      />
+      <label for="feImage12"
+        ><img
+          src="https://www.zhangxinxu.com/study/201712/grad/ripple-gray.png"
+      /></label>
+      <input
+        type="radio"
+        id="feImage13"
+        name="feImage"
+        value="https://www.zhangxinxu.com/study/201712/grad/grad12.jpg"
+      />
+      <label for="feImage13"
+        ><img src="https://www.zhangxinxu.com/study/201712/grad/grad12.jpg"
+      /></label>
+    </p>
+
+    <p>
+      scale范围(0-200)：<input
+        id="range"
+        type="range"
+        min="0"
+        max="200"
+        value="80"
+      />
+    </p>
+    <script>
+      var eleFeImage = document.getElementById("svgFeImage");
+      var eleFeMap = document.getElementById("feMap");
+      var eleRadios = document.querySelectorAll('input[type="radio"]');
+
+      [].slice.call(eleRadios).forEach(function (eleRadio) {
+        eleRadio.addEventListener("click", function () {
+          eleFeImage.setAttribute("xlink:href", this.value);
+        });
+      });
+
+      document.getElementById("range").addEventListener("input", function () {
+        eleFeMap.setAttribute("scale", this.value);
+      });
+    </script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-11205167-1"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function () {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src = "http://www.google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?48d8e938d5365a4cb0fc9e65d945018e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script>
+      (function () {
+        var bp = document.createElement("script");
+        var curProtocol = window.location.protocol.split(":")[0];
+        if (curProtocol === "https") {
+          bp.src = "https://zz.bdstatic.com/linksubmit/push.js";
+        } else {
+          bp.src = "http://push.zhanzhang.baidu.com/push.js";
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  </body>
+</html>

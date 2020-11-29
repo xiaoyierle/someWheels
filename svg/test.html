@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <svg width="200" height="200" viewBox="0 0 220 220"
+  xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="filter-ripple">
+            <feImage xlink:href="https://www.zhangxinxu.com/study/201712/grad/map.png" x="0" y="0" width="256" height="256" result="ripple"></feImage>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" color-interpolation-filters="sRGB" in="SourceGraphic" in2="ripple" scale="80"></feDisplacementMap>
+            <feComposite operator="in" in2="ripple"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg width="256" height="192" style="outline:1px dotted;">
+    <image xlink:href="https://image.zhangxinxu.com/image/study/s/s256/mm1.jpg" width="256" height="192" filter="url(#filter-ripple)"></image> 
+</svg>
+
+
+<svg width="200" height="200" viewBox="0 0 220 220"
+     xmlns="http://www.w3.org/2000/svg">
+  <filter id="displacementFilter">
+    <feTurbulence type="turbulence" baseFrequency="0.05"
+        numOctaves="2" result="turbulence"/>
+    <feDisplacementMap in2="turbulence" in="SourceGraphic"
+        scale="50" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <circle cx="100" cy="100" r="100"
+      style="filter: url(#displacementFilter)"/>
+</svg>
+
+<svg >
+  <defs>
+    <filter id="image">
+      <feImage xlink:href="https://www.zhangxinxu.com/study/201712/grad/map.png" x="0" y="0" width="256" height="256" />
+    </filter>
+  </defs>
+
+  <rect x="10%" y="10%" width="80%" height="80%"
+      style="filter:url(#image);"/>
+</svg>
+
+
+<img src="https://image.zhangxinxu.com/image/study/s/s256/mm1.jpg" style="filter: url(#displacementFilter)"/>
+</body>
+<style>
+
+</style>
+</html>

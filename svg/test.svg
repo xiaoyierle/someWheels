@@ -1,0 +1,10 @@
+<svg class="svg-filters">
+    <defs>
+        <filter id="filter-ripple-1">
+            <feImage id="svgFeImage" xlink:href="https://www.zhangxinxu.com/study/201712/grad/grad1.jpg" x="0" y="0" width="512" height="512" result="ripple"></feImage>
+            <feDisplacementMap id="feMap" xChannelSelector="R" yChannelSelector="G" color-interpolation-filters="sRGB" in="SourceGraphic" in2="ripple" scale="80"></feDisplacementMap>
+            <feComposite operator="in" in2="ripple"></feComposite>
+            <!-- <feComposite in2="SourceGraphic"></feComposite> -->
+        </filter>
+    </defs>
+</svg>
